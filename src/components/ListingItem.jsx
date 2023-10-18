@@ -21,8 +21,10 @@ function ListingItem({ listing, id, onDelete }) {
               ? listing.discountedPrice
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              : listing.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            {listing.type === "rent" && "/ Month"}
+              : listing.regularPrice
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            {listing.type === "rent" && " / Month"}
           </p>
           <div className="categoryListingInfoDiv">
             <img src={bedIcon} alt="Bed" />

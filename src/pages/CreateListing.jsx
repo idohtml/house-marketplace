@@ -115,7 +115,6 @@ export default function CreateListing() {
     } else {
       geolocation.lat = latitude;
       geolocation.lng = longitude;
-      location = address;
       // only if geolocation is disabled
       //   console.log(geolocation, location);
     }
@@ -171,15 +170,14 @@ export default function CreateListing() {
     };
 
     // Cleanup
+    formDataCopy.location = address;
     delete formDataCopy.images;
     delete formDataCopy.address;
-    location && (formDataCopy.location = location);
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
-
     setLoading(false);
-    toast.success("Listing created");
+    toast.success("Listing saved");
     navigate(`/category/${formDataCopy.type}/${docRef.id}`);
   };
 
