@@ -23,7 +23,6 @@ function App() {
           <Route path="/offers" element={<Offers />} />
           <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/profile" element={<PrivateRoute />}>
-            {/* This is the outlet */}
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="/sign-in" element={<SignIn />} />
@@ -38,6 +37,7 @@ function App() {
         </Routes>
         <Navbar />
       </Router>
+
       <ToastContainer />
     </>
   );

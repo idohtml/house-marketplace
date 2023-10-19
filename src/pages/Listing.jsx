@@ -21,7 +21,6 @@ export default function Listing() {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        console.log(docSnap.data());
         setListing(docSnap.data());
         setLoading(false);
       }
@@ -29,6 +28,10 @@ export default function Listing() {
 
     fetchListing();
   }, [navigate, params.listingId]);
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <main>
@@ -74,12 +77,12 @@ export default function Listing() {
           <li>
             {listing.bedrooms > 1
               ? `${listing.bedrooms} Bedrooms`
-              : "1 Bedroom"}
+              : `${listing.bedrooms} Bedroom`}
           </li>
           <li>
             {listing.bathrooms > 1
               ? `${listing.bathrooms} Bathrooms`
-              : "1 Bathroom"}
+              : `${listing.bathrooms} Bathroom`}
           </li>
           <li>{listing.parking && "Parking Spot"}</li>
           <li>{listing.furnished && "Furnished"}</li>
