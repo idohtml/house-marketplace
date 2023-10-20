@@ -44,7 +44,6 @@ export default function Listing() {
 
   return (
     <main>
-      {/* Slideshow */}
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         slidesPerView={1}
@@ -66,8 +65,6 @@ export default function Listing() {
           );
         })}
       </Swiper>
-
-      {/* Slideshow */}
 
       <div
         className="shareIconDiv"
